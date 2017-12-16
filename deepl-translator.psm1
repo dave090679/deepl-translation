@@ -89,7 +89,7 @@ $tolang = $tolang.toupper()
 
 $url = "https://www.deepl.com/jsonrpc"
 $call = '{"jsonrpc":"2.0","method":"LMT_handle_jobs","params":{"jobs":[{"kind":"default","raw_en_sentence":"'+$sentence+'"}],"lang":{"user_preferred_langs":["'+$fromlang+'", "'+$tolang+'"],"source_lang_user_selected":"'+$fromLang+'","target_lang":"'+$toLang+'"},"priority":-1},"id":15}'
-$bytes = [System.Text.Encoding]::ASCII.GetBytes($call)
+$bytes = [System.Text.Encoding]::UTF8.GetBytes($call)
 $web = [System.Net.WebRequest]::Create($url)
 $web.Method = "POST"
 $web.ContentLength = $bytes.Length
